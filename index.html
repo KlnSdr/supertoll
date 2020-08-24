@@ -7,7 +7,14 @@
     <title>Document</title>
 </head>
 
-<body>
+<script>
+    let fill = 255;
+    function start() {
+        setInterval(function(){ document.body.style.backgroundColor = "rgb(" + fill.toString() + ", "+ fill.toString() + ", " + fill.toString() + ")"; fill -= 1; if (fill == 50) {fill = 255;}}, 1000);
+    }
+</script>
+
+<body onload="start()">
     <ul>
         <li>
             <a href="#blog">/blog</a>
