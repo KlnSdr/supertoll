@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <a href="#blog">/blog</a>
+            <ul>
+                <li>
+                    <a href="#blogget">get.php</a>
+                </li>
+                <li>
+                    <a href="#blogsave">saveArticle.php</a>
+                </li>
+                <li>
+                    <a href="#blogsearch">search.php</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#chat">/chat</a>
+            <ul>
+                <li>
+                    <a href="#chatget">get.php</a>
+                </li>
+                <li>
+                    <a href="#chatinit">init.php</a>
+                </li>
+                <li>
+                    <a href="#chatsearch">search.php</a>
+                </li>
+                <li>
+                    <a href="#chatsend">send.php</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#my">/my</a>
+            <ul>
+                <li>
+                    <a href="#mychange">changePassword.php</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#shs">/shs/anmeldung</a>
+            <ul>
+                <li>
+                    <a href="#shssave">save.php</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#signup">/signup</a>
+            <ul>
+                <li>
+                    <a href="#signupsignup">signup.php</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <hr>
+    <h1 id="blog">
+        /blog
+    </h1>
+    <h3 id="blogget">get.php
+    </h3>
+    <ul>
+        <li>
+            Parameter
+            <ul>
+                <li>
+                    id
+                </li>
+            </ul>
+        </li>
+        <li>
+            Rückgabe(json/mehrdimensional)
+            <ul>
+                <li>
+                    wenn id angegeben
+                    <ul>
+                        <li>
+                            title
+                        </li>
+                        <li>content</li>
+                        <li>image (name der Datei in /images)</li>
+                        <li>date (YYYY-MM-DD HH:MM:SS)</li>
+                        <li>id</li>
+                        <li>name (name des zugehörigen blogs)</li>
+                    </ul>
+                </li>
+                <li>
+                    wenn id nicht angegeben und name als getparameter angegeben ist
+                    <ul>
+                        <li>
+                            title
+                        </li>
+                        <li>content (die ersten 256 zeichen des artikels)</li>
+                        <li>image (name der Datei in /images)</li>
+                        <li>date (YYYY-MM-DD HH:MM:SS)</li>
+                        <li>id</li>
+                        <li>name (name des zugehörigen blogs)</li>
+                    </ul>
+                </li>
+                <li>
+                    wenn id und name nicht angegeben sind werden alle blogs zurückgegeben
+                    <ul>
+                        <li>
+                            name (name des blogs)
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 id="blogsave">
+        saveArticle.php
+    </h3>
+    <ul>
+        <li>
+            Parameter
+            <ul>
+                <li>title</li>
+                <li>content</li>
+                <li>blogname</li>
+                <li>imagefile (über dateiupload nicht post)</li>
+            </ul>
+        </li>
+        <li>
+            Rückgabe (json/eindimensional)
+            <ul>
+                <li>
+                    success (true wenn erfolgreich, sonst false)
+                </li>
+                <li>
+                    message (wenn success = false, dann fehlertext, sonst nicht vorhanden)
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 id="blogsearch">
+        search.php
+    </h3>
+    <ul>
+        <li>
+            Parameter
+            <ul>
+                <li>mode <ul>
+                        <li>1 -> suche in titel</li>
+                        <li>2 -> suche in text</li>
+                        <li>3 -> suche in text und tite</li>
+                    </ul>
+                </li>
+                <li>
+                    key (zu suchender text)
+                </li>
+                <li>
+                    blogname (nur wenn in einem bestimmten blog gesucht werden soll, sonst werden alle treffer
+                    zurückgegeben)
+                </li>
+            </ul>
+        </li>
+        <li>
+            Rückgabe (json/mehrdimensional)
+            <ul>
+                <li>
+                    title
+                </li>
+                <li>content (die ersten 256 zeichen des artikels)</li>
+                <li>image (name der Datei in /images)</li>
+                <li>date (YYYY-MM-DD HH:MM:SS)</li>
+                <li>id</li>
+                <li>name (name des zugehörigen blogs)</li>
+            </ul>
+        </li>
+    </ul>
+    <hr>
+    <h1 id="chat">
+        /chat
+    </h1>
+    <h3 id="chatget">
+        get.php
+    </h3>
+    <ul>
+        <li>
+            Parameter
+            <ul>
+                <li>
+                    partner (name)
+                </li>
+            </ul>
+        </li>
+        <li>
+            Rückgabe (json/mehrdimensional)
+            <ul>
+                <li>
+                    content (nachrichteninhalt)
+                </li>
+                <li>
+                    from (name des senders/ der senderin)
+                </li>
+                <li>
+                    timestamp (YYYY-MM-DD HH:MM:SS)
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <h3 id="chatinit">
+        init.php
+    </h3>
+    <ul>
+        <li>
+            Parameter
+            <ul>
+                <li>
+                    getAll
+                </li>
+                <i>oder</i>
+                <li>
+                    partner
+                </li>
+            </ul>
+        </li>
+        <li>
+            Rückgabe (json/mehrdimensional)
+            <ul>
+                <li>
+                    wenn getAll
+                    <ul>
+                        <li>
+                            content (die ersten 16 zeichen der nachricht)
+                        </li>
+                        <li>
+                            timestamp (YYYY-MM-DD HH:MM:SS)
+                        </li>
+                        <li>
+                            name (name des senders)
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    wenn partner
+                    <ul>
+                        <li>
+                            own (true wenn selbst gesendet, false wenn nicht)
+                        </li>
+                        <li>
+                            content (inhalt der nachricht)
+                        </li>
+                        <li>
+                            timestamp (YYYY-MM-DD HH:MM:SS)
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <h3 id="chatsearch">
+        search.php
+    </h3>
+    <ul>
+        <li>
+            Parameter
+            <ul>
+                <li>
+                    name (ganzer name oder teil davon)
+                </li>
+            </ul>
+        </li>
+        <li>
+            Rückgabe (json/mehrdimensional)
+            <ul>
+                name (gesamter name der person)
+            </ul>
+        </li>
+    </ul>
+    <h3 id="chatsend">
+        send.php
+    </h3>
+    <ul>
+        <li>
+            Parameter
+            <ul>
+                <li>
+                    content
+                </li>
+                <li>
+                    to
+                </li>
+            </ul>
+        </li>
+        <li>
+            Rückgabe (json/eindimensional)
+            <ul>
+                <li>
+                    success (true wenn erfolgreich; false bei fehler)
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <hr>
+    <h1 id="my">
+        /my
+    </h1>
+    <h3 id="mychange">
+        changePassword.php
+    </h3>
+    <ul>
+        <li>
+            Parameter
+            <ul>
+                <li>
+                    oldPassword
+                </li>
+                <li>
+                    newPassword
+                </li>
+            </ul>
+        </li>
+        <li>
+            Rückgabe (json/eindimensional)
+            <ul>
+                <li>
+                    success (true wenn erfolgreich; false bei fehler)
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <hr>
+    <h1 id="shs">
+        /shs/anmeldung
+    </h1>
+    <h3 id="shssave">
+        save.php
+    </h3>
+    <ul>
+        <li>
+            Parameter
+            <ul>
+                <li>name</li>
+                <li>klasse</li>
+                <li>mail</li>
+                <li>telefon</li>
+                <li>nachhilfe (0 wenn nehmen, 1 wenn geben)</li>
+                <li>fach (Fächernamen mit semikolon getrennt)</li>
+                <li>zeit (dezimaldarstellung von binärzahl; aufbau: erste stelle immer 1, danach
+                    montag_dritterBlock, montag_vierterBlock, dienstag_dritterBlock, ... [natürlich ohne kommas] ->
+                    1 = "ich kann" & 0 = "ich kann nicht")</li>
+                <li>einzelnachhilfe (0 wenn einzelnachhilfe; 1 wenn gruppennachhilfe</li>
+                <li>bemerkung (optional)</li>
+            </ul>
+        </li>
+        <li>
+            Rückgabe (json/mehrdimensional)
+            <ul>
+                <li>
+                    success (true wenn erfolgreich; false bei fehler)
+                </li>
+                <li>
+                    message (wenn false fehlertext)
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <hr>
+    <h1 id="signup">
+        /signup
+    </h1>
+    <h3 id="signupsignup">
+        signup.php
+    </h3>
+    <ul>
+        <li>
+            Parameter
+            <ul>
+                <li>
+                    name
+                </li>
+                <li>
+                    password
+                </li>
+                <li>
+                    mail (optional)
+                </li>
+            </ul>
+        </li>
+        <li>
+            Rückgabe (json/eindimensional)
+            <ul>
+                <li>
+                    success (true wenn erfolgreich; false bei fehler)
+                </li>
+                <li>
+                    message (wenn false fehlertext)
+                </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+
+</html>
