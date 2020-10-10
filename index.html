@@ -7,14 +7,7 @@
     <title>Document</title>
 </head>
 
-<script>
-    let fill = 255;
-    function start() {
-        setInterval(function(){ document.body.style.backgroundColor = "rgb(" + fill.toString() + ", "+ fill.toString() + ", " + fill.toString() + ")"; fill -= 1; if (fill == 50) {fill = 255;}}, 1000);
-    }
-</script>
-
-<body onload="start()">
+<body>
     <ul>
         <li>
             <a href="#blog">/blog</a>
@@ -27,23 +20,6 @@
                 </li>
                 <li>
                     <a href="#blogsearch">search.php</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="#chat">/chat</a>
-            <ul>
-                <li>
-                    <a href="#chatget">get.php</a>
-                </li>
-                <li>
-                    <a href="#chatinit">init.php</a>
-                </li>
-                <li>
-                    <a href="#chatsearch">search.php</a>
-                </li>
-                <li>
-                    <a href="#chatsend">send.php</a>
                 </li>
             </ul>
         </li>
@@ -187,130 +163,6 @@
                 <li>date (YYYY-MM-DD HH:MM:SS)</li>
                 <li>id</li>
                 <li>name (name des zugehörigen blogs)</li>
-            </ul>
-        </li>
-    </ul>
-    <hr>
-    <h1 id="chat">
-        /chat
-    </h1>
-    <h3 id="chatget">
-        get.php
-    </h3>
-    <ul>
-        <li>
-            Parameter
-            <ul>
-                <li>
-                    partner (name)
-                </li>
-            </ul>
-        </li>
-        <li>
-            Rückgabe (json/mehrdimensional)
-            <ul>
-                <li>
-                    content (nachrichteninhalt)
-                </li>
-                <li>
-                    from (name des senders/ der senderin)
-                </li>
-                <li>
-                    timestamp (YYYY-MM-DD HH:MM:SS)
-                </li>
-            </ul>
-        </li>
-    </ul>
-    <h3 id="chatinit">
-        init.php
-    </h3>
-    <ul>
-        <li>
-            Parameter
-            <ul>
-                <li>
-                    getAll
-                </li>
-                <i>oder</i>
-                <li>
-                    partner
-                </li>
-            </ul>
-        </li>
-        <li>
-            Rückgabe (json/mehrdimensional)
-            <ul>
-                <li>
-                    wenn getAll
-                    <ul>
-                        <li>
-                            content (die ersten 16 zeichen der nachricht)
-                        </li>
-                        <li>
-                            timestamp (YYYY-MM-DD HH:MM:SS)
-                        </li>
-                        <li>
-                            name (name des senders)
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    wenn partner
-                    <ul>
-                        <li>
-                            own (true wenn selbst gesendet, false wenn nicht)
-                        </li>
-                        <li>
-                            content (inhalt der nachricht)
-                        </li>
-                        <li>
-                            timestamp (YYYY-MM-DD HH:MM:SS)
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
-    <h3 id="chatsearch">
-        search.php
-    </h3>
-    <ul>
-        <li>
-            Parameter
-            <ul>
-                <li>
-                    name (ganzer name oder teil davon)
-                </li>
-            </ul>
-        </li>
-        <li>
-            Rückgabe (json/mehrdimensional)
-            <ul>
-                name (gesamter name der person)
-            </ul>
-        </li>
-    </ul>
-    <h3 id="chatsend">
-        send.php
-    </h3>
-    <ul>
-        <li>
-            Parameter
-            <ul>
-                <li>
-                    content
-                </li>
-                <li>
-                    to
-                </li>
-            </ul>
-        </li>
-        <li>
-            Rückgabe (json/eindimensional)
-            <ul>
-                <li>
-                    success (true wenn erfolgreich; false bei fehler)
-                </li>
             </ul>
         </li>
     </ul>
